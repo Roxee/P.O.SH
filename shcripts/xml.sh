@@ -1,4 +1,9 @@
 #!/bin/bash
+##################################################################################
+# P.O.SH
+# (c) 2012 Mangled Deutz <dev@webitup.fr>
+# Distributed under the terms of the WTF-PL: do wtf you want with that code
+##################################################################################
 
 _readnode() {
         local IFS=">";
