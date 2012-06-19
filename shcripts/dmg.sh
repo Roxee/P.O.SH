@@ -5,14 +5,14 @@
 # Distributed under the terms of the WTF-PL: do wtf you want with that code
 ##################################################################################
 
-dmg:make(){
+dmg::make(){
     # Var mapping
     volumeTitle=$1
     dmgFileName=$2
 
     appName=$3
     appBasePath=$4
-    cd "$appBasePath"
+    # cd "$appBasePath"
     appSource=${appBasePath}/${appName}.app
 
     backgroundName=$5
@@ -91,6 +91,6 @@ dmg:make(){
     hdiutil convert "posh.temp.dmg" -format UDZO -imagekey zlib-level=9 -o "${dmgFileName}"
 
     rm posh.temp.dmg
-    cd - > /dev/null
+    # cd - > /dev/null
 }
 

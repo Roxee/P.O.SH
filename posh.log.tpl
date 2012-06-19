@@ -14,7 +14,5 @@
         }
   </style>
 </head>
-<body>
-{changelog}
-</body>
+<body>{changelog}</body>
 </html>

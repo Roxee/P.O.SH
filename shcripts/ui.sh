@@ -5,7 +5,7 @@
 # Distributed under the terms of the WTF-PL: do wtf you want with that code
 ##################################################################################
 
-ui:header(){
+ui::header(){
   tput setaf 2
   echo "********************************************************************************************"
   echo "* $@"
@@ -14,7 +14,7 @@ ui:header(){
   tput op
 }
 
-ui:section(){
+ui::section(){
   tput setaf 2
   echo ""
   echo "____________________________________________________________________________________________"
@@ -24,11 +24,11 @@ ui:section(){
   tput op
 }
 
-ui:text(){
+ui::text(){
   echo "$@"
 }
 
-ui:error(){
+ui::error(){
   tput setaf 1
   echo " * ERROR: $@"
   echo " Try --help or --mayday, optionally followed by a topic name for more info"
@@ -36,23 +36,23 @@ ui:error(){
   exit 1
 }
 
-ui:info(){
+ui::info(){
   tput setaf 2
   echo " * INFO: $@"
   tput op
 }
 
-ui:warning(){
+ui::warning(){
   tput setaf 3
   echo " * WARNING: $@"
   tput op
 }
 
-ui:confirm(){
+ui::confirm(){
   echo "$@. Press enter now."
   read
 }
 
-ui:ask(){
+ui::ask(){
   read -p "$1" $2
 }
