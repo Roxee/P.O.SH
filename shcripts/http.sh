@@ -43,6 +43,10 @@ http::getnoerror(){
 
 
 http::get(){
-  bitch="$(curl -i \"$1\")"
+  bitch=$(curl -i $1)
   echo "$bitch" | http::getnoerror "$2"
 }
+
+
+# http::get http://google.fr testbidon
+# exit
