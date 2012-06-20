@@ -23,6 +23,7 @@ source "$posh_root/shcripts/http.sh"
 source "$posh_root/shcripts/xml.sh"
 source "$posh_root/shcripts/crypto.sh"
 source "$posh_root/shcripts/dmg.sh"
+source "$posh_root/shcripts/fmwk.sh"
 
 ui::header "P.O.SH, a piece of shcript that nicely bundle piles of crode"
 
@@ -44,6 +45,9 @@ case $main_command in
   ;;
   "mayday")
     help::long
+  ;;
+  "framework")
+    fmwk::fixshit "$@"
   ;;
   "")
   ;;
