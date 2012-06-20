@@ -46,9 +46,6 @@ case $main_command in
   "mayday")
     help::long
   ;;
-  "framework")
-    fmwk::fixshit "$@"
-  ;;
   "")
   ;;
   *)
@@ -59,7 +56,10 @@ case $main_command in
   ;;
 esac
 
-
+if [[ "$args_framework" != "" ]]; then
+  fmwk::fixshit $args_framework
+  exit
+fi
 # *************************************
 # * Check requirements
 # *************************************
