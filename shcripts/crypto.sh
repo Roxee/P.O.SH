@@ -6,18 +6,19 @@
 ##################################################################################
 
 crypto::generatekeys(){
-  ui::warning "Different versions of openssl are known to break havoc here.\
-If your signed updates don't validate in Sparkle in a cryptic way, \
-double check what openssl version you have been using (which openssl) \
-read https://answers.launchpad.net/sparkle/+question/37960 \
-and/or try a different openssl version (possibly using brew)"
+#   ui::warning "Different versions of openssl are known to break havoc here.\
+# If your signed updates don't validate in Sparkle in a cryptic way, \
+# double check what openssl version you have been using (which openssl) \
+# read https://answers.launchpad.net/sparkle/+question/37960 \
+# and/or try a different openssl version (possibly using brew)"
   if [[ ! -d "$1" ]]; then
       mkdir "$1"
   fi
   cd "$1"
-  openssl dsaparam 2048 < /dev/urandom > dsaparam.pem
-  openssl gendsa dsaparam.pem -out dsa_priv.pem
-  openssl dsa -in dsa_priv.pem -pubout -out dsa_pub.pem
+  # /usr/bin/openssl dsaparam 2048 < /dev/urandom > dsaparam.pem
+  /usr/bin/openssl dsaparam 1024 < /dev/urandom > dsaparam.pem
+  /usr/bin/openssl gendsa dsaparam.pem -out dsa_priv.pem
+  /usr/bin/openssl dsa -in dsa_priv.pem -pubout -out dsa_pub.pem
   rm dsaparam.pem
   ui::info "Keys generated into $1"
   ui::confirm "You NEED to understand that the private key is PRECIOUS - and you should back it up, and you MUST NOT loose it."

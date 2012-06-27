@@ -29,7 +29,7 @@ dmg::make(){
     fi
 
     # Creation of tmp dmg
-    hdiutil create -srcfolder "${appSource}" -volname "${volumeTitle}" -fs HFS+ -fsargs "-c c=64,a=16,e=16" -format UDRW -size 100m posh.temp.dmg
+    hdiutil create -srcfolder "${appSource}" -volname "${volumeTitle}" -fs HFS+ -fsargs "-c c=64,a=16,e=16" -format UDRW -size 150m posh.temp.dmg
     device=$(hdiutil attach -readwrite -noverify -noautoopen "posh.temp.dmg" | egrep '^/dev/' | sed 1q | awk '{print $1}')
     sleep 5
 

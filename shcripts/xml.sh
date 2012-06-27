@@ -7,6 +7,8 @@
 
 # ★ ＆
 
+
+# XXXXXXX will choke if comment contains < or >
 xml::parser::core(){
   processor=$1
   N="$2"

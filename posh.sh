@@ -318,7 +318,7 @@ echo $loghtml | xml::parse proc > "$logFileName"
 
 args::fetch feed http://something/cast.xml
 # Compute signature
-args_synthetic_signature="`openssl dgst -sha1 -binary < "${dmgFinal}" | openssl dgst -dss1 -sign "$args_keys/dsa_priv.pem" | openssl enc -base64`"
+args_synthetic_signature="`/usr/bin/openssl dgst -sha1 -binary < "${dmgFinal}" | /usr/bin/openssl dgst -dss1 -sign "$args_keys/dsa_priv.pem" | /usr/bin/openssl enc -base64`"
 args_synthetic_signature=`echo $args_synthetic_signature`
 args_synthetic_signature=${args_synthetic_signature/ /}
 # Compute size
