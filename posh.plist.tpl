@@ -2,6 +2,8 @@
 <string>dsa_pub.pem</string>
 <key>SUFeedURL</key>
 <string>{feed}</string>
+<key>CFBundleShortVersionString</key>
+<string>{shortversion}</string>
 <key>CFBundleVersion</key>
 <string>{version}</string>
 <key>SUEnableAutomaticChecks</key>

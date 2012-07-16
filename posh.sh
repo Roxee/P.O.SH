@@ -128,6 +128,9 @@ ui::section "Generating plist and copying key"
 args::fetch version X.Y.Z
 args::fetch feed http://brainfuck/myappcast.xml
 
+# XXX strip-out the last digit of the full version to have a short version - kind of idiosyncrasic...
+args_shortversion="${args_version%.*}"
+
 # Copy the public key
 cp "${args_keys}/dsa_pub.pem" "${args_app}/Contents/Resources"
 
