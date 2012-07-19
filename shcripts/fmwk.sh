@@ -9,6 +9,8 @@
 fmwk::fixshit(){
   destination="$1"
   fbasepath="$2"
+  # Ensure shit is writable
+  chmod -R u+w "$fbasepath"
   fname="$3"
   fversion="$4"
   fidbase="$5"
