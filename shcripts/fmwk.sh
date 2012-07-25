@@ -20,7 +20,7 @@ fmwk::fixshit(){
   fi
   mkdir -p "$destination/$fname.framework/Versions"
   # Get binary for a starter
-  binpath=`find "$fbasepath/$fname.framework/Versions" -mindepth 1 -maxdepth 1 -not -name "Current"`
+  binpath="`find \"$fbasepath/$fname.framework/Versions\" -mindepth 1 -maxdepth 1 -type d -not -name \"Current\"`"
   currentversion=${binpath##*/}
   mkdir "$destination/$fname.framework/Versions/$currentversion"
   ln -s $currentversion "$destination/$fname.framework/Versions/Current"
