@@ -24,7 +24,7 @@ fmwk::fixshit(){
   currentversion=${binpath##*/}
   mkdir "$destination/$fname.framework/Versions/$currentversion"
   ln -s $currentversion "$destination/$fname.framework/Versions/Current"
-  cp "$binpath/$fname" "$destination/$fname.framework/Versions/$currentversion"
+  cp "$fbasepath/$fname.framework/Versions/$currentversion/$fname" "$destination/$fname.framework/Versions/$currentversion"
   if [[ -d  "$binpath/Resources" ]]; then
     cp -R "$binpath/Resources" "$destination/$fname.framework/Versions/$currentversion"
   else
