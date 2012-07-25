@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+  <!-- https://bugreports.qt-project.org/browse/QTBUG-21609 -->
+  <!-- http://developer.apple.com/library/mac/#documentation/Miscellaneous/Reference/EntitlementKeyReference/Chapters/EnablingAppSandbox.html#//apple_ref/doc/uid/TP40011195-CH4-SW1 -->
+    <key>com.apple.security.app-sandbox</key>
+    <true/>
+    <!-- Notification center 
+    <key>com.apple.developer.aps-environment</key>
+    <development/>
+    -->
+
+    <!-- other perms -->
+    <key>com.apple.security.assets.movies.read-only</key>
+    <true />
+    <key>com.apple.security.documents.user-selected.read-write</key>
+    <true/>
+    <key>com.apple.security.network.client</key>
+    <true />
+    <key>com.apple.security.personal-information.location</key>
+    <true />
+  </dict>
+</plist>
