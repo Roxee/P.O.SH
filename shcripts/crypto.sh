@@ -44,8 +44,51 @@ crypto::codesigndmg(){
   fi
 }
 
-
 crypto::codesignapp(){
+  identity="$1"
+  app_path="$2"
+  entitle_path="$posh_root/posh.entitlements.plist"
+  appname=${app_path##*/}
+  appname=${appname%%.app}
+  # if codesign --entitlements "$entitle_path" --resource-rules "$posh_root/posh.codesign.tpl" -f -s "$identity" "$app_path/Contents/MacOS/$appname" > /dev/null; then
+  #     ui::info "..."
+  # else
+  #     ui::error "Failed signing bitch! Probably your identity didn't check out. Are you who you pretend you are? :)))"
+  # fi
+
+  if [[ -d "$app_path/Contents/Frameworks" ]]; then
+    if find "$app_path/Contents/Frameworks" -iname "Current" -exec codesign -f -s "$identity" "{}" \; > /dev/null; then
+      ui::info "Signed frameworks succesfully"
+    else
+      ui::warning "Failed signing some framework!!!!!!!"
+      # ui::confirm "Continue anyhow?"
+      # candidates=`find "$app_path/Contents/Frameworks" -iname "Current"`
+      # for i in $candidates; do
+      #     echo "$i"
+      #     if codesign -f -s "$identity" "$i" > /dev/null; then
+      #         ui::info "Signed $i"
+      #     else
+      #         ui::warning "Failed signing framework $i"
+      #     fi
+      # done
+    fi
+  fi
+
+  if codesign --entitlements "$entitle_path" --resource-rules "$posh_root/posh.codesign.tpl" -f -s "$identity" "$app_path" > /dev/null; then
+      ui::info "..."
+  else
+      ui::error "Failed signing bitch! Probably your identity didn't check out. Are you who you pretend you are? :)))"
+  fi
+
+  exit
+}
+
+
+#  signature.commands += codesign -f -s $${CERT} -v --entitlements MacSandbox-Entitlements.plist $${TARGET}.app;
+
+
+
+crypto::codesignappOLD(){
   identity="$1"
   app_path="$2"
   if codesign --resource-rules "$posh_root/posh.codesign.tpl" -f -s "$identity" "$app_path" > /dev/null; then
