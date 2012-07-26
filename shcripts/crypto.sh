@@ -44,7 +44,7 @@ crypto::codesigndmg(){
   fi
 }
 
-crypto::codesignapp(){
+crypto::codesignappSANDBOX(){
   identity="$1"
   app_path="$2"
   entitle_path="$posh_root/posh.entitlements.plist"
@@ -88,14 +88,9 @@ crypto::codesignapp(){
 
 
 
-crypto::codesignappOLD(){
+crypto::codesignapp(){
   identity="$1"
   app_path="$2"
-  if codesign --resource-rules "$posh_root/posh.codesign.tpl" -f -s "$identity" "$app_path" > /dev/null; then
-      ui::info "..."
-  else
-      ui::error "Failed signing bitch! Probably your identity didn't check out. Are you who you pretend you are? :)))"
-  fi
   if [[ -d "$app_path/Contents/Frameworks" ]]; then
     if find "$app_path/Contents/Frameworks" -iname "Current" -exec codesign -f -s "$identity" "{}" \; > /dev/null; then
       ui::info "Signed frameworks succesfully"
@@ -112,5 +107,10 @@ crypto::codesignappOLD(){
       #     fi
       # done
     fi
+  fi
+  if codesign --resource-rules "$posh_root/posh.codesign.tpl" -f -s "$identity" "$app_path" > /dev/null; then
+      ui::info "..."
+  else
+      ui::error "Failed signing bitch! Probably your identity didn't check out. Are you who you pretend you are? :)))"
   fi
 }
