@@ -58,10 +58,12 @@ dmg::make(){
 
                         set position of item "'${appName}'" of container window to {190, 245}
 
+                        # make new alias file at container window to POSIX file "/Applications"
                         make new alias file at container window to POSIX file "/Applications" with properties {name:"Applications"}
                         set position of item "Applications" of container window to {505, 237}
-
                     close
+
+                    # end
                     open
                         update without registering applications
                         delay 5
@@ -78,10 +80,15 @@ dmg::make(){
 
                         # update without registering applications
                         # delay 1
+                    close
                 # eject
             end tell
         end tell
     ' | osascript
+
+    # Recently, finder started hanging over Applications/..namedfork/rsrc inside the bundle, preventing to unmount it.
+    # No idea why this started, or how to get rid of it but kill the crap...
+    killall Finder
 
     # Chmod the shit, convert, cleanup
     chmod -Rf go-w "/Volumes/${volumeTitle}"
